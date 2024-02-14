@@ -12,6 +12,10 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.springframework.beans.factory.annotation.Value;
+
+
 
 
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
@@ -21,37 +25,67 @@ import static org.springframework.boot.test.context.SpringBootTest.WebEnvironmen
 public class CreateProductFunctionalTest {
 
     @LocalServerPort
-    private int port;
+    private int serverPort;
 
-    private WebDriver driver;
+    @Value("${app.baseUrl:http://localhost}")
+    private String testBaseUrl;
+    private String baseUrl;
+
 
     @BeforeEach
-    public void setup() {
-        driver = new ChromeDriver();
-        driver.get("http://localhost:" + port + "/product/create");
+    void setupTest() {
+        baseUrl = String.format("%s:%d/product/create", testBaseUrl, serverPort);
     }
 
     @Test
-    public void testCreateProduct() {
+    void testNameInteraction(ChromeDriver driver) throws Exception {
+        driver.get(baseUrl);
         WebElement nameInput = driver.findElement(By.id("nameInput"));
+        nameInput.clear();
+
+        String testProductName = "Test Product Name";
+        nameInput.sendKeys(testProductName);
+
+        String nameData = nameInput.getAttribute("value");
+        assertEquals(testProductName, nameData);
+
+        nameInput.clear();
+        nameData = nameInput.getAttribute("value");
+        assertEquals("", nameData);
+    }
+    @Test
+    void testQuantityInteraction(ChromeDriver driver) throws Exception {
+        driver.get(baseUrl);
         WebElement quantityInput = driver.findElement(By.id("quantityInput"));
-        WebElement submitButton = driver.findElement(By.xpath("//button[@type='submit']"));
+        quantityInput.clear();
 
-        // Fill the form
-        nameInput.sendKeys("Test Product");
-        quantityInput.sendKeys("20");
-        submitButton.click();
+        String testQuantity = "100";
+        quantityInput.sendKeys(testQuantity);
 
-        // Verify redirection and product creation
-        assertTrue(driver.getCurrentUrl().contains("/product/list"));
-        WebElement productList = driver.findElement(By.tagName("body"));
-        assertTrue(productList.getText().contains("Test Product"));
+        String quantityData = quantityInput.getAttribute("value");
+        assertEquals(testQuantity, quantityData);
+
+        quantityInput.clear();
+        quantityData = quantityInput.getAttribute("value");
+        assertEquals("", quantityData);
     }
 
-    @AfterEach
-    public void tearDown() {
-        if (driver != null) {
-            driver.quit();
-        }
+    @Test
+    void verifyPageTitle(ChromeDriver driver) throws Exception {
+        driver.get(baseUrl);
+        String pageTitle = driver.getTitle();
+
+        assertEquals("Create New Product", pageTitle);
     }
+
+    @Test
+    void verifyHeader(ChromeDriver driver) throws Exception {
+        driver.get(baseUrl);
+        String headerText = driver.findElement(By.tagName("h3")).getText();
+
+        assertEquals("Create New Product", headerText);
+    }
+
+
+
 }

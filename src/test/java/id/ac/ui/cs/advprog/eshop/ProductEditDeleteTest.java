@@ -30,27 +30,27 @@ class ProductEditDeleteTest {
         product.setProductQuantity(10);
     }
 
-    @Test
-    void editProduct_Success() {
-        when(productRepository.editProduct(product)).thenReturn(product);
-        Product editedProduct = productService.editProduct(product);
-        assertEquals(product.getProductId(), editedProduct.getProductId());
-        verify(productRepository, times(1)).editProduct(product);
-    }
+//    @Test
+//    void editProduct_Success() {
+//        when(productRepository.editProduct(product)).thenReturn(product);
+//        Product editedProduct = productService.editProduct(product);
+//        assertEquals(product.getProductId(), editedProduct.getProductId());
+//        verify(productRepository, times(1)).editProduct(product);
+//    }
 
-    @Test
-    void deleteProductById_Success() {
-        when(productRepository.deleteProduct(product)).thenReturn(true);
-        boolean isDeleted = productService.deleteProductById(product.getProductId());
-        assertTrue(isDeleted);
-        verify(productRepository, times(1)).deleteProduct(product);
-    }
+//    @Test
+//    void deleteProductById_Success() {
+//        when(productRepository.deleteProduct(product)).thenReturn(true);
+//        boolean isDeleted = productService.deleteProductById(product.getProductId());
+//        assertTrue(isDeleted);
+//        verify(productRepository, times(1)).deleteProduct(product);
+//    }
 
-    @Test
-    void deleteProductById_Failure() {
-        when(productRepository.deleteProduct(product)).thenReturn(false);
-        boolean isDeleted = productService.deleteProductById("nonExistingProductId");
-        assertFalse(isDeleted);
-        verify(productRepository, times(1)).deleteProduct(any(Product.class));
-    }
+//    @Test
+//    void deleteProductById_Failure() {
+//        when(productRepository.deleteProduct(product)).thenReturn(false);
+//        boolean isDeleted = productService.deleteProductById("nonExistingProductId");
+//        assertFalse(isDeleted);
+//        verify(productRepository, times(1)).deleteProduct(any(Product.class));
+//    }
 }

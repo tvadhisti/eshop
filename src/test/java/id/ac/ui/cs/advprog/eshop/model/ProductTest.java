@@ -25,4 +25,25 @@ class ProductTest {
     void testGetProductQuantity() {
         assertEquals(100, this.product.getProductQuantity());
     }
+
+    @Test
+    void testSetProductId() {
+        String newProductId = "new-product-id";
+        this.product.setProductId(newProductId);
+        assertEquals(newProductId, this.product.getProductId());
+    }
+
+    @Test
+    void testSetProductName() {
+        String newProductName = "New Product Name";
+        this.product.setProductName(newProductName);
+        assertEquals(newProductName, this.product.getProductName());
+    }
+
+    @Test
+    void testSetProductQuantity() {
+        int newProductQuantity = 200;
+        this.product.setProductQuantity(newProductQuantity);
+        assertEquals(newProductQuantity, this.product.getProductQuantity());
+    }
 }

@@ -21,7 +21,6 @@ configurations {
 repositories {
     mavenCentral()
 }
-
 val seleniumJavaVersion = "4.14.1"
 val seleniumJupiterVersion = "5.0.1"
 val webdrivermanagerVersion = "5.6.3"
@@ -40,7 +39,6 @@ dependencies {
     testImplementation("io.github.bonigarcia:webdrivermanager:$webdrivermanagerVersion")
     testImplementation("org.junit.jupiter:junit-jupiter-api:$junitJupiterVersion")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitJupiterVersion")
-
 }
 
 tasks.register<Test>("unitTest") {
@@ -48,7 +46,7 @@ tasks.register<Test>("unitTest") {
     group = "verification"
 
     filter {
-        excludeTestsMatching("*FunctionalTest")
+        excludeTestsMatching("*FunctionalTest");
     }
 }
 
@@ -61,15 +59,14 @@ tasks.register<Test>("functionalTest") {
     }
 }
 
-tasks.withType<Test>().configureEach() {
+tasks.withType<Test>().configureEach {
     useJUnitPlatform()
 }
 
 tasks.test {
-    filter {
+    filter{
         excludeTestsMatching("*FunctionalTest")
     }
-
     finalizedBy(tasks.jacocoTestReport)
 }
 

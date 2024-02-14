@@ -30,7 +30,7 @@ public class ProductRepository {
         return null;
     }
 
-    public boolean deleteProduct(Product product) {
-        return productData.remove(product);
+    public void delete(String productId) {
+        productData.removeIf(product -> product.getProductId().equals(productId));
     }
 }
