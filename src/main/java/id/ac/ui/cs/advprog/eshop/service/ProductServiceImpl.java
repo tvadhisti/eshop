@@ -5,11 +5,9 @@ import id.ac.ui.cs.advprog.eshop.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.UUID;
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -19,45 +17,29 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product create(Product product) {
-        product.setProductId(String.valueOf(UUID.randomUUID()));
-        productRepository.create(product);
-        return product;
+        return productRepository.create(product);
     }
 
     @Override
     public List<Product> findAll() {
         Iterator<Product> productIterator = productRepository.findAll();
-        List<Product> allProduct = new ArrayList<>();
-        productIterator.forEachRemaining(allProduct::add);
-        return allProduct;
+        List<Product> allProducts = new ArrayList<>();
+        productIterator.forEachRemaining(allProducts::add);
+        return allProducts;
     }
 
     @Override
-    public Product getProductId(String id) {
-        Product product = null;
-        Iterator<Product> productIterator = productRepository.findAll();
-
-        while(productIterator.hasNext()) {
-            Product item = productIterator.next();
-
-            if (item.getProductId().equals(id)) {
-                product = item;
-                break;
-            }
-        }
-        return product;
+    public Product findById(String productId) {
+        return productRepository.findById(productId);
     }
 
     @Override
-    public Product editProduct(Product product) {
-        productRepository.editProduct(product);
-        return product;
+    public Product update(Product product) {
+        return productRepository.update(product);
     }
 
-
-
     @Override
-    public void deleteProductById(String productId) {
+    public void delete(String productId) {
         productRepository.delete(productId);
     }
 }

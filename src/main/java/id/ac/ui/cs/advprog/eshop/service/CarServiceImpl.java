@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.UUID;
 
 @Service
 public class CarServiceImpl implements CarService {
@@ -15,8 +14,6 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public Car create(Car car) {
-        // TODO Auto-generated method stub
-        car.setCarId(String.valueOf(UUID.randomUUID()));
         carRepository.create(car);
         return car;
     }
@@ -37,13 +34,11 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public void update(String carId, Car car) {
-        // TODO Auto-generated method stub
         carRepository.update(carId, car);
     }
 
     @Override
     public void deleteCarById(String carId) {
-        // TODO Auto-generated method stub
         carRepository.delete(carId);
     }
 }

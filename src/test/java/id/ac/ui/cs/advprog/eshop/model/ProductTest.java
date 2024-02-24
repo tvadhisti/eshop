@@ -15,7 +15,7 @@ class ProductTest {
     }
     @Test
     void testGetProductId() {
-        assertEquals ( "eb558e9f-1c39-460e-8860-71af6af63bd6", this.product.getProductId());
+        assertEquals ( "eb558e9f-1c39-460e-8860-71af6af63bd6", this.product.getId());
     }
     @Test
     void testGetProductName() {
@@ -29,8 +29,8 @@ class ProductTest {
     @Test
     void testSetProductId() {
         String newProductId = "new-product-id";
-        this.product.setProductId(newProductId);
-        assertEquals(newProductId, this.product.getProductId());
+        this.product.setId(newProductId);
+        assertEquals(newProductId, this.product.getId());
     }
 
     @Test

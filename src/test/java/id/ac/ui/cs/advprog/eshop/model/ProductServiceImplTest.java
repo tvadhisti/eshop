@@ -32,18 +32,18 @@ class ProductServiceImplTest {
 
         List<Product> productList = new ArrayList<>();
         Product product1 = new Product();
-        product1.setProductId("1");
-        product1.setProductName("1");
+        product1.setId("1");
+        product1.setName("1");
         productList.add(product1);
 
         Product product2 = new Product();
-        product2.setProductId("2");
-        product2.setProductName("2");
+        product2.setId("2");
+        product2.setName("2");
         productList.add(product2);
 
         Product product3 = new Product();
-        product3.setProductId("3");
-        product3.setProductName("3");
+        product3.setId("3");
+        product3.setName("3");
         productList.add(product3);
 
 
@@ -53,14 +53,14 @@ class ProductServiceImplTest {
     @Test
     void testAddingProduct() {
         Product product = new Product();
-        product.setProductName("Test Item");
+        product.setName("Test Item");
 
         when(productRepository.create(product)).thenReturn(product);
 
         Product createdProduct = productService.create(product);
 
-        assertNotNull(createdProduct.getProductId());
-        assertEquals(product.getProductName(), createdProduct.getProductName());
+        assertNotNull(createdProduct.getId());
+        assertEquals(product.getName(), createdProduct.getName());
 
         verify(productRepository, times(1)).create(product);
     }
@@ -68,22 +68,22 @@ class ProductServiceImplTest {
     @Test
     void testFetchingProductById() {
         // Test getting a product by ID
-        Product result1 = productService.getProductId("1");
-        Product result2 = productService.getProductId("2");
-        Product result3 = productService.getProductId("3");
-        Product result4 = productService.getProductId("4"); // Non-existing ID
+        Product result1 = productService.findById("1");
+        Product result2 = productService.findById("2");
+        Product result3 = productService.findById("3");
+        Product result4 = productService.findById("4"); // Non-existing ID
 
         // Assert the results
-        assertEquals("1", result1.getProductName());
-        assertEquals("2", result2.getProductName());
-        assertEquals("3", result3.getProductName());
+        assertEquals("1", result1.getName());
+        assertEquals("2", result2.getName());
+        assertEquals("3", result3.getName());
         assertNull(result4); // No product found for ID "4"
     }
     @Test
     void testCreateAndFind(){
         Product product = new Product();
-        product.setProductId("eb5shi9f-1c39-460e-si82-7128shf63bd6");
-        product.setProductName("Sample Clothing");
+        product.setId("eb5shi9f-1c39-460e-si82-7128shf63bd6");
+        product.setName("Sample Clothing");
         Product prodRep = productRepository.create(product);
 
     }
@@ -115,21 +115,21 @@ class ProductServiceImplTest {
     void testEditProduct() {
 
         Product mockProduct = new Product();
-        mockProduct.setProductId("7");
-        mockProduct.setProductName("Product");
+        mockProduct.setId("7");
+        mockProduct.setName("Product");
 
 
-        when(productRepository.editProduct(mockProduct)).thenReturn(mockProduct);
+        when(productRepository.update(mockProduct)).thenReturn(mockProduct);
 
 
-        Product editedProduct = productService.editProduct(mockProduct);
+        Product editedProduct = productService.update(mockProduct);
 
         assertNotNull(editedProduct);
-        assertEquals("7", editedProduct.getProductId());
-        assertEquals("Product", editedProduct.getProductName());
+        assertEquals("7", editedProduct.getId());
+        assertEquals("Product", editedProduct.getName());
 
 
-        verify(productRepository, times(1)).editProduct(mockProduct);
+        verify(productRepository, times(1)).update(mockProduct);
     }
 
 
@@ -139,7 +139,7 @@ class ProductServiceImplTest {
     void testDeleteProduct() {
         String productId = "a2sj8719k-02h7-111k-28js-d0hs7dde9096";
 
-        productService.deleteProductById(productId);
+        productService.delete(productId);
 
         verify(productRepository, times(1)).delete(productId);
     }
