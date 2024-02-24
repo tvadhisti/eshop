@@ -29,7 +29,17 @@ By fixing these issues, we can make our new test suite cleaner and easier to wor
 
 ## Reflection 
 
-1. In my project, I've used SOLID principles to make sure each part of the code is well organized and has a clear purpose. Following principles like Single Responsibility means I've organized my classes to do specific jobs. This makes the code easier to understand and work with. One example is I've grouped common attributes into separate classes, like the item class, to keep things neat and easy to follow.
+1. In my project, I've integrated several SOLID principles to keep things organized and flexible.
+
+First off, there's the Single Responsibility Principle (SRP). It's all about each piece of code or class doing just one thing. I applied this to my models, like Car and Product, by creating a new class called Item. This Item class holds all the common attributes shared between Car and Product, keeping things tidy and focused.
+
+Next up is the Open-Closed Principle (OCP). This one says that software should be open for extension but closed for modification. In my project, I used the ProductRepo, which extends ProductRepository. This setup allows for adding new functionalities without having to change the existing code. It keeps things adaptable without messing with what's already working.
+
+Then there's the Liskov Substitution Principle (LSP). This principle ensures that you can swap out objects of a parent class with objects of a child class without causing any unexpected problems. It's like having interchangeable parts. In my project, swapping instances of Product and Car with those in Item doesn't mess up the code. Everything still runs smoothly.
+
+Lastly, there's the Interface Segregation Principle (ISP). This one is about making sure that implementing classes only have the methods they need. It's like keeping things streamlined. In my project, both CarRepo and ProductRepo stick to this principle. They each have methods specific to either Cars or Products, avoiding any unnecessary clutter.
+
+So, by following these SOLID principles, my project stays organized, flexible, and less prone to unexpected issues.
 
 2. Using SOLID principles has lots of benefits for my project. It helps keep the code flexible and easy to change when requirements shift. For example, following the Open Closed Principle means I can add new features without breaking existing code, like in ProductRepo and CarRepo, which makes it easier to expand and maintain the project.
 
