@@ -24,3 +24,13 @@ By fixing these issues, we can make our new test suite cleaner and easier to wor
 1. During the exercise, I identified several code quality issues and addressed them accordingly. First, my test cases encounter difficulties running successfully. Initially, the error message suggests changing the ID, which I do, but then another error message appears, adding to the confusion. Next, I noticed that the variable and function names were not descriptive enough, so I renamed them to improve readability and maintainability. Additionally, my delete test case wasn't working correctly, so I made some changes to the delete function to make it easier to test.
    
 2. Looking at my CI/CD workflows in GitHub, I believe the current implementation meets the definition of Continuous Integration and Continuous Deployment. Each time I push changes to the repository, the CI/CD pipeline automatically runs tests and builds the application. This means that code changes are quickly integrated and deployed, making the development cycle more efficient and agile.
+
+# WEEK 3
+
+## Reflection 
+
+1. In my project, I've used SOLID principles to make sure each part of the code is well organized and has a clear purpose. Following principles like Single Responsibility means I've organized my classes to do specific jobs. This makes the code easier to understand and work with. One example is I've grouped common attributes into separate classes, like the item class, to keep things neat and easy to follow.
+
+2. Using SOLID principles has lots of benefits for my project. It helps keep the code flexible and easy to change when requirements shift. For example, following the Open Closed Principle means I can add new features without breaking existing code, like in ProductRepo and CarRepo, which makes it easier to expand and maintain the project.
+
+3. Not applying SOLID principles in the project can lead to messy and confusing code that's hard to work with. For example, if I ignore the Single Responsibility Principle and cram unrelated tasks into one class, it becomes tough to manage and prone to mistakes. Plus, if I don't follow the Interface Segregation Principle, I might end up with overly complicated interfaces that make development harder and slow down progress. So, it's important to stick to SOLID principles to keep the code clean and the project running smoothly.
