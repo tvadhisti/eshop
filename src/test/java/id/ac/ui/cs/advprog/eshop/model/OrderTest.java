@@ -25,6 +25,16 @@ class OrderTest {
     }
 
     @Test
+    void testCreateOrderEmptyProduct() {
+        this.products.clear();
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            Order order = new Order("13652556-012a-4c07-b546-54eb1396d79b",
+                    this.products, 1708560000L, "Safira Sudrajat");
+        });
+    }
+
+    @Test
     void testCreateOrderDefaultStatus() {
         Order order = new Order("13652556-012a-4c07-b546-54eb1396d79b",
                 this.products, 1708560000L, "Safira Sudrajat");
@@ -41,14 +51,14 @@ class OrderTest {
     @Test
     void testCreateOrderSuccessStatus() {
         Order order = new Order("13652556-012a-4c07-b546-54eb1396d79b",
-                this.products, 1708560000L, "Safira Sudrajat");
+                this.products, 1708560000L, "Safira Sudrajat", "SUCCESS");
         assertEquals("SUCCESS", order.getStatus());
     }
 
     @Test
     void testCreateOrderInvalidStatus() {
         assertThrows(IllegalArgumentException.class, () -> {
-            new Order("13652556-012a-4c07-b546-54eb1396d79b",
+            Order order = new Order("13652556-012a-4c07-b546-54eb1396d79b",
                     this.products, 1708560000L, "Safira Sudraiat", "MEOW");
         });
     }
