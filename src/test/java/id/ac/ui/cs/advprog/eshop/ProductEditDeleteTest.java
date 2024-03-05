@@ -25,9 +25,9 @@ class ProductEditDeleteTest {
     void setUp() {
         MockitoAnnotations.openMocks(this);
         product = new Product();
-        product.setProductId("testProductId");
-        product.setProductName("Test Product");
-        product.setProductQuantity(10);
+        product.setId("testProductId");
+        product.setName("Test Product");
+        product.setQuantity(10);
     }
 
 //    @Test

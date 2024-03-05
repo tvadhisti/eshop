@@ -49,15 +49,15 @@ public class ProductControllerTest {
     @Test
     void TestProductListPage() {
         Product product1 = new Product();
-        product1.setProductId("hq719e9f-1hs7-sjs7-9222-10hd0aj27sp6");
-        product1.setProductName("Love bonito white short");
-        product1.setProductQuantity(15);
+        product1.setId("hq719e9f-1hs7-sjs7-9222-10hd0aj27sp6");
+        product1.setName("Love bonito white short");
+        product1.setQuantity(15);
         productRepository.create(product1);
 
         Product product2 = new Product();
-        product2.setProductId("k1g7pp00-sh28-sjs8-k871-s7102jjs8269");
-        product2.setProductName("Nike dunk");
-        product2.setProductQuantity(10);
+        product2.setId("k1g7pp00-sh28-sjs8-k871-s7102jjs8269");
+        product2.setName("Nike dunk");
+        product2.setQuantity(10);
         productRepository.create(product2);
 
         List<Product> expectedProducts = Arrays.asList(product1, product2);
