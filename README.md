@@ -46,7 +46,7 @@ So, by following these SOLID principles, my project stays organized, flexible, a
 3. Not applying SOLID principles in the project can lead to messy and confusing code that's hard to work with. For example, if I ignore the Single Responsibility Principle and cram unrelated tasks into one class, it becomes tough to manage and prone to mistakes. Plus, if I don't follow the Interface Segregation Principle, I might end up with overly complicated interfaces that make development harder and slow down progress. So, it's important to stick to SOLID principles to keep the code clean and the project running smoothly.
 
 
-# WEEK 3
+# WEEK 4
 
 ## Reflection 
 
