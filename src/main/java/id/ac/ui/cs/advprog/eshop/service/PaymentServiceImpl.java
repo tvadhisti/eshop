@@ -46,4 +46,37 @@ public class PaymentServiceImpl implements PaymentService {
         return paymentRepository.getAllPayment();
     }
 
+    public String validateVoucher(String voucherCode) {
+        if (isValidVoucher(voucherCode)) {
+            return "SUCCESS";
+        } else {
+            return "REJECTED";
+        }
+    }
+
+    private boolean isValidVoucher(String voucherCode) {
+        if (voucherCode == null || voucherCode.length() != 16 || !voucherCode.startsWith("ESHOP")) {
+            return false;
+        }
+
+        int digitCount = 0;
+        for (int i = 5; i < voucherCode.length(); i++) {
+            if (Character.isDigit(voucherCode.charAt(i))) {
+                digitCount++;
+            }
+        }
+
+        return digitCount >= 8;
+    }
+
+    public boolean isBankTransferValid(Map<String, String> paymentData) {
+        String bankName = paymentData.get("bankName");
+        String referenceCode = paymentData.get("referenceCode");
+
+        return isStringValid(bankName) && isStringValid(referenceCode);
+    }
+
+    private boolean isStringValid(String str) {
+        return str != null && !str.isEmpty();
+    }
 }
