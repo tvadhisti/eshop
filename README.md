@@ -44,3 +44,49 @@ So, by following these SOLID principles, my project stays organized, flexible, a
 2. Using SOLID principles has lots of benefits for my project. It helps keep the code flexible and easy to change when requirements shift. For example, following the Open Closed Principle means I can add new features without breaking existing code, like in ProductRepo and CarRepo, which makes it easier to expand and maintain the project.
 
 3. Not applying SOLID principles in the project can lead to messy and confusing code that's hard to work with. For example, if I ignore the Single Responsibility Principle and cram unrelated tasks into one class, it becomes tough to manage and prone to mistakes. Plus, if I don't follow the Interface Segregation Principle, I might end up with overly complicated interfaces that make development harder and slow down progress. So, it's important to stick to SOLID principles to keep the code clean and the project running smoothly.
+
+
+# WEEK 3
+
+## Reflection 
+
+### 1. This TDD flow is useful enough for you or not
+1. Did I understand what I was testing?
+   
+The tests seem to have a clear understanding of what they are testing. For example, createPayment is tested for creating a payment, updateStatus is tested for updating the status of a payment, and so on. The test methods are appropriately named to reflect the behavior they are testing.
+
+2. Does this test help to pin down a bug?
+   
+Unit tests written using TDD aim to prevent bugs by ensuring that individual components behave as expected. While these tests may not directly pinpoint bugs, they help in identifying regressions and ensuring that the code behaves as intended when changes are made.
+
+3. Is the test comprehensive enough?
+   
+The provided tests cover basic functionality, for example creating a payment, updating its status, finding payments by ID, and finding all payments. However, they may not cover all edge cases. So further testing might be needed to ensure comprehensive coverage.
+
+4. Is the test maintainable?
+   
+The test code should be easy to understand and maintain. The tests are readable and logically structured. However, if the test code becomes overly complex, it may become hard to maintain.
+
+### 2. F.I.R.S.T. principle
+
+F) Fast
+
+Sure, when I run my tests, they should finish pretty quickly. This helps me quickly figure out if my code is working properly without having to wait around too long.
+
+I) Isolated/Independent
+
+Sure, each test I've written doesn't rely on the results of other tests. So no matter what order I run them in, each test stands on its own, checking a specific part of my code without interference.
+
+R) Repeatable
+
+Sure, my tests are consistent. Whenever I run them, I get the same results every time. 
+
+S) Self-Validating
+
+Sure, my tests double-check their own work. They compare the expected outcome with the actual outcome to make sure everything is as it should be. If something goes wrong, the test will let me know.
+
+T) Thorough
+
+For sure, I've covered all the important stuff with my tests.
+
+
